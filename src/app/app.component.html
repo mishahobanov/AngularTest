@@ -1,16 +1,23 @@
 <div class="container">
-  <h1>Create ticket</h1>
   <div class="row">
-
-  <h3>Can't find what you're looking for?
-  <br>We’re happy to answer any questions you may have, just send us a ticket.</h3>
-
-  <button mat-raised-button color="primary">Create a new ticket</button>
-  <div class="col-12">
-    <h1>Tickets</h1>
-    <app-ticket-filter></app-ticket-filter>
+    <div class="col-12">
+        <h1>Create ticket</h1>
+    </div>
+    <div class="col-12">
+      <h3>Can't find what you're looking for?
+        <br>We’re happy to answer any questions you may have, just send us a ticket.</h3>
+    </div>
+    <div class="col-12">
+      <button mat-raised-button color="primary" (click)="openDialog()">Create a new ticket</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6 pt-3">
+      <h1>Tickets</h1>
+    </div>
+    <div class="col-6">
+      <app-ticket-filter></app-ticket-filter>
+    </div>
   </div>
   <app-ticket-list></app-ticket-list>
-  </div>
-  
 </div>

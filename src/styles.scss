@@ -10,7 +10,8 @@ $custom-typography: mat-typography-config(
 );
 
 @include angular-material-typography($custom-typography);
-
+@import '~quill/dist/quill.bubble.css';
+@import '~quill/dist/quill.snow.css';
 html, body { height: 100%; }
 body { margin: 0; }
 .container{
