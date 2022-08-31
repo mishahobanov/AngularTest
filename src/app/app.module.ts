@@ -1,45 +1,36 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatButtonModule} from '@angular/material/button';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import { MatTableModule } from '@angular/material/table'  
-import {MatIconModule} from '@angular/material/icon';
-import {MatMenuModule} from '@angular/material/menu';
-import {MatDialogModule} from '@angular/material/dialog';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
-import {MatSelectModule} from '@angular/material/select';
-import {QuillModule} from 'ngx-quill';
+import { StoreModule } from '@ngrx/store';
+import { AppRoutingModule } from './app-routing.module';
+import { SharedModule } from './shared/shared.module';
 
+import { TicketModule } from './tickets/ticket.module';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
+import { HttpClientModule } from '@angular/common/http';
+import { reducers } from './store/reducers';
+import { environment } from 'src/environments/environment';
 
-import { TicketListComponent } from './ticket-list/ticket-list.component';
-import { TicketDialogComponent } from './ticket-dialog/ticket-dialog.component';
-import { TicketFilterComponent } from './ticket-filter/ticket-filter.component';
-import { ReactiveFormsModule } from '@angular/forms';
+export interface AppState {
+  app: {
+    user: any;
+  };
+}
+
 @NgModule({
   declarations: [
-    AppComponent,
-    TicketListComponent,
-    TicketDialogComponent,
-    TicketFilterComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    MatTableModule,
-    MatIconModule,
-    MatMenuModule,
-    MatPaginatorModule,
-    MatButtonModule,
-    BrowserAnimationsModule,
-    MatDialogModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    QuillModule,
-    ReactiveFormsModule
+    TicketModule,
+    AppRoutingModule,
+    SharedModule,
+    StoreModule.forRoot(reducers),
+    EffectsModule.forRoot([]),
+    HttpClientModule,
+    StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
   ],
   providers: [],
   bootstrap: [AppComponent]
